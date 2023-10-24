@@ -1,0 +1,11 @@
+scooter_rent=# SELECT c.login,
+scooter_rent-# COUNT(o.id)
+scooter_rent-# FROM "Couriers" AS c
+scooter_rent-# LEFT OUTER JOIN "Orders" AS o ON c.id=o."courierId"
+scooter_rent-# WHERE o."inDelivery"=true
+scooter_rent-# GROUP BY c.login;
+
+scooter_rent=# SELECT track,
+scooter_rent-# CASE WHEN finished=true THEN 2 WHEN cancelled=true THEN -1
+scooter_rent-# WHEN "inDelivery" =true THEN 1 ELSE 0 END AS order_status
+scooter_rent-# FROM "Orders";
